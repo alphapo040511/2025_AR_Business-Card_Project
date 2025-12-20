@@ -8,11 +8,21 @@ public class ImageTrackingSpawner : MonoBehaviour
 {
     public Text logText;
     [SerializeField] ARTrackedImageManager trackedImageManager;
-    [SerializeField] GameObject cardPrefab;
+    public NameCardVIew cardPrefab;
+    public List<UserDataSO> userList = new List<UserDataSO>();
     private GameObject target;
 
     // 이미지 ID → 생성된 오브젝트 매핑
-    Dictionary<string, GameObject> spawnedObjects = new();
+    Dictionary<string, UserDataSO> userDatas = new();
+    Dictionary<string, NameCardVIew> spawnedObjects = new();
+
+    private void Start()
+    {
+        foreach(var user in userList)
+        {
+            userDatas.Add(user.imageId, user);
+        }
+    }
 
     void OnEnable()
     {
@@ -37,10 +47,14 @@ public class ImageTrackingSpawner : MonoBehaviour
             if (spawnedObjects.ContainsKey(imageId))
                 continue;
 
-            GameObject obj = Instantiate(cardPrefab, trackedImage.transform);
+            if(!userDatas.ContainsKey(imageId)) continue;
+
+            NameCardVIew obj = Instantiate(cardPrefab, trackedImage.transform);
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
-            obj.transform.localScale = Vector3.one * 0.02f;
+            obj.transform.localScale = Vector3.one * 0.022f;
+
+            obj.SetUserData(userDatas[imageId]);
 
             spawnedObjects.Add(imageId, obj);
         }
@@ -54,7 +68,7 @@ public class ImageTrackingSpawner : MonoBehaviour
                 continue;
 
             // 인식 상태에 따라 표시 제어
-            obj.SetActive(trackedImage.trackingState == TrackingState.Tracking);
+            obj.gameObject.SetActive(trackedImage.trackingState == TrackingState.Tracking);
         }
 
         // 3️ 이미지가 사라졌을 때
@@ -66,7 +80,7 @@ public class ImageTrackingSpawner : MonoBehaviour
 
             if (spawnedObjects.TryGetValue(imageId, out var obj))
             {
-                Destroy(obj);
+                Destroy(obj.gameObject);
                 spawnedObjects.Remove(imageId);
             }
         }

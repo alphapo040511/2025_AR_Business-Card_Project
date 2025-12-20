@@ -10,37 +10,59 @@ public class NameCardVIew : MonoBehaviour
 
     public Image displayImage;
 
+    public Image profileImage;
+
     public TextMeshProUGUI nameText;
+
+    private string[] links = new string[3];
+
+    List<Sprite> sprites = new List<Sprite>();
+
+    public float changeInterval = 2f;   // 2ÃÊ
+
+    int currentIndex = 0;
+    float timer = 0f;
 
     public void OnEnable()
     {
         if (canvas != null)
         {
             canvas.worldCamera = Camera.main;
-
-            if (nameText != null && canvas.worldCamera == Camera.main)
-                nameText.text = "ÃÊ±âÈ­µÊ!";
         }
-
-
-        
     }
 
-    public void SetColor(int i)
+    void Update()
     {
-        Color newColor = Color.black;
+        if (sprites == null || sprites.Count == 0) return;
 
-        if(i == 0)
-            newColor = Color.white;
-        else if(i == 1)
-            newColor = Color.red;
-        else if(i == 2)
-            newColor = Color.green;
-        else if(i == 3)
-            newColor = Color.blue;
+        timer += Time.deltaTime;
 
+        if (timer >= changeInterval)
+        {
+            timer = 0f;
+            currentIndex = (currentIndex + 1) % sprites.Count;
+            displayImage.sprite = sprites[currentIndex];
+        }
+    }
 
-        if(displayImage != null)
-            displayImage.color = newColor;
+    public void SetUserData(UserDataSO userData)
+    {
+        profileImage.sprite = userData.profile;
+        nameText.text = userData.userName;
+
+        links = new string[3];
+        links[0] = userData.eMail;
+        links[1] = userData.webUrl_1;
+        links[2] = userData.webUrl_2;
+
+        sprites = userData.sprites;
+    }
+
+    public void OnClickButton(int index)
+    {
+        if(links.Length > index && index >= 0)
+        {
+            Application.OpenURL(links[index]);
+        }
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97bbcaf46d5562942b9b259a31d5d798, type: 3}
+  m_Name: GY
+  m_EditorClassIdentifier: 
+  imageId: GY
+  profile: {fileID: 21300000, guid: 4985cd246cc98d14cbddb18e4eb3e522, type: 3}
+  userName: "\uAE40\uAC00\uC724"
+  eMail: mailto:bokowife2@.naver.com
+  webUrl_1: https://www.artstation.com/ggayun253
+  webUrl_2: https://github.com/gy1022
+  sprites:
+  - {fileID: 21300000, guid: d75df695ed48a9c4f9d8f32fcb804683, type: 3}
+  - {fileID: 21300000, guid: a1ab66658e4e487488053f24ed470503, type: 3}
+  - {fileID: 21300000, guid: e967749d7398da5499c85d80e6976c02, type: 3}

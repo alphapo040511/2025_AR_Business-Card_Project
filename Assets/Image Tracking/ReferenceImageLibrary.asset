@@ -18,12 +18,12 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4673185482993898036
-      m_GuidHigh: 9978651589078931861
+      m_GuidLow: 5249535413619888201
+      m_GuidHigh: 4062424425328258195
     m_SerializedTextureGuid:
-      m_GuidLow: 5887476618483973410
-      m_GuidHigh: 10728534260175101209
-    m_Size: {x: 0.1, y: 0.1}
+      m_GuidLow: 8238487514592099515
+      m_GuidHigh: 634947451459238939
+    m_Size: {x: 0.09, y: 0.05003763}
     m_SpecifySize: 1
-    m_Name: YangHak
+    m_Name: GY
     m_Texture: {fileID: 0}

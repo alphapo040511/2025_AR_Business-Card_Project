@@ -748,7 +748,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logText: {fileID: 1008583768}
   trackedImageManager: {fileID: 344795440}
-  cardPrefab: {fileID: 8722538686908255776, guid: 9a924350b5869934eb99ce52f9272c09, type: 3}
+  cardPrefab: {fileID: 6605613043369105760, guid: 9a924350b5869934eb99ce52f9272c09, type: 3}
+  userList:
+  - {fileID: 11400000, guid: 9c0603f5603024f4ca69a6fcef196552, type: 2}
 --- !u!4 &1432109092
 Transform:
   m_ObjectHideFlags: 0
