@@ -37,7 +37,7 @@ public class ImageTrackingSpawner : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs args)
     {
-        logText.text = "인식됨";
+        logText.text = "명함 인식됨";
 
         // 1️ 새로 인식된 이미지
         foreach (var trackedImage in args.added)
@@ -57,6 +57,8 @@ public class ImageTrackingSpawner : MonoBehaviour
             obj.SetUserData(userDatas[imageId]);
 
             spawnedObjects.Add(imageId, obj);
+
+            logText.text = $"새로운 명함 생성 {imageId}";
         }
 
         // 2️ 추적 중인 이미지 업데이트
